@@ -8,6 +8,8 @@ Implementation of the paper: "BRAVE : Broadening the visual encoding of vision-l
 
 
 ## usage
+
+### 
 ```python
 import torch
 from brave_torch.main import SwarmOfViTs
@@ -32,3 +34,10 @@ print(out)
 
 # Citations
 
+## Todo
+- [ ] Citation link
+- [ ] Citation Bibtex
+- [ ] Diagram photo
+- [ ] Implement Andromeda Base LLM architecture
+- [ ] Provide multi-modal tokenizer
+- [ ] Train and release the model 
