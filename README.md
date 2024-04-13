@@ -8,28 +8,43 @@ Implementation of the paper: "BRAVE : Broadening the visual encoding of vision-l
 
 
 ## usage
+`pip3 install brave-torch`
 
-### 
+### `BraveMultiModalFusion`
+- The Swarm of ViTs coupled with the meqformer 
+
 ```python
-import torch
-from brave_torch.main import SwarmOfViTs
+import torch  # Importing the torch library for deep learning operations
+from brave_torch.main import (
+    BraveMultiModalFusion,
+)  # Importing the BraveMultiModalFusion class from brave_torch.main module
 
-# IMG Tensor
-x = torch.randn(1, 3, 224, 224) 
+x = torch.randn(
+    1, 1000, 512
+)  # Generating a random tensor of shape (1, 1000, 512) using torch.randn
+img = torch.randn(
+    1, 3, 256, 256
+)  # Generating a random tensor of shape (1, 3, 256, 256) using torch.randn
 
-# Model
-model = SwarmOfViTs(
-    image_size=224,
-    patch_size=32,
-    encoder_dim=512,
-    encoder_depth=6,
-    encoder_heads=8,
-    num_of_vits=4
+model = BraveMultiModalFusion(
+    dim=512,  # Dimension of the model
+    mult=4,  # Multiplier for the dimension
+    depth=1,  # Depth of the model
+    dropout=0.1,  # Dropout rate
+    heads=8,  # Number of attention heads
+    image_size=256,  # Size of the input image
+    patch_size=32,  # Size of the image patches
+    encoder_dim=512,  # Dimension of the encoder
+    encoder_depth=6,  # Depth of the encoder
+    encoder_heads=8,  # Number of attention heads in the encoder
+    num_of_vits=4,  # Number of ViTs (Vision Transformers)
 )
 
-# Forward
-out = model(x)
-print(out)
+out = model(
+    x, img
+)  # Forward pass through the model to get the output
+print(out)  # Printing the output
+
 ```
 
 # Citations
